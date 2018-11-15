@@ -440,12 +440,12 @@ ifeq ($(WHAT),)
 else
        TEST_OBJ = selected-pkg-test
 endif
-test: | $(JUNIT_REPORT)
-	mkdir -p $(dir $(JUNIT_UNIT_TEST_XML))
-	set -o pipefail; \
-	KUBECONFIG="$${KUBECONFIG:-$${GO_TOP}/src/istio.io/istio/.circleci/config}" \
-	$(MAKE) --keep-going $(TEST_OBJ) \
-	2>&1 | tee >($(JUNIT_REPORT) > $(JUNIT_UNIT_TEST_XML))
+#test: | $(JUNIT_REPORT)
+#	mkdir -p $(dir $(JUNIT_UNIT_TEST_XML))
+#   set -o pipefail; \
+#	KUBECONFIG="$${KUBECONFIG:-$${GO_TOP}/src/istio.io/istio/.circleci/config}" \
+#	$(MAKE) --keep-going $(TEST_OBJ) \
+#	2>&1 | tee >($(JUNIT_REPORT) > $(JUNIT_UNIT_TEST_XML))
 
 GOTEST_PARALLEL ?= '-test.parallel=4'
 # This is passed to mixer and other tests to limit how many builds are used.
